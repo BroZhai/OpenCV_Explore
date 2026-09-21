@@ -12,6 +12,8 @@ cv2.imshow("blue_intensity", ocv[:,:,0]); # 蓝色区域全白
 
 # Tips: 在不指定读取颜色的情况下, OpenCV默认用的是'BGR'读的颜色格式
 # 我们也可以转成我们熟悉的RGB排布形式 [使用cv2.cvtColor()函数 和 cv2.COLOR_BGR2RGB常量]
+# 注: 在cv2.imread()时, 我们并不能做到'打开就按指定颜色读' (如 cv2.imread('a.png', cv2.COLOR_BGR2RGB), 不能这么写!)
+# 只能'先打开文件', 后面再手动用cv2.cvtColor转
 ocv_rgb = cv2.cvtColor(ocv, cv2.COLOR_BGR2RGB);
 # 这样一来, 现在ocv_rgb的[:,:,0]; 就是'红色灰度图'了, 显示的图片和上面的red_intensity应一致
 cv2.imshow("rgb_r_intensity", ocv_rgb[:,:,0]);

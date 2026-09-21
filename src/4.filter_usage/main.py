@@ -1,6 +1,6 @@
 import cv2
 
-noise_img = cv2.imread("noise.png", cv2.COLOR_BGR2RGB);
+noise_img = cv2.imread("noise.png");
 
 # 我们来研究一下各种'滤波器' filter的使用方式
 
