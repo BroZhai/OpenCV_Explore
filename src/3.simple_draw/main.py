@@ -8,7 +8,9 @@ canvas = np.zeros([300, 300, 3], dtype=np.uint8); # 创建一个宽 & 高都是3
 cv2.line(canvas, (200,150), (250, 250), (0,0,255), 3);
 
 # cv2.rectangle(numpy数组对象, (x,y终点坐标), (线段B, G, R颜色), 线条粗细))
+# Tips: 这里的'线条粗细'可以填'-1', 表示"实心填充"
 cv2.rectangle(canvas,(30,100),(130,200), (255,0,0), 2);
+cv2.rectangle(canvas,(150,100),(250,150), (0,255,0), -1);
 
 # cv2.circle(numpy数组对象, (x,y圆心坐标), 半径, (线段B, G, R颜色), 线条粗细))
 cv2.circle(canvas, (50,50), 35, (125,125,0), 3);
