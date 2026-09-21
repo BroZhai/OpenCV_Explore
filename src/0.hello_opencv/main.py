@@ -3,7 +3,10 @@ print(f"当前使用的OpenCV的版本是: {cv2.getVersionString()}");
 
 # 图片的读取
 niko = cv2.imread("Niko.png"); # cv2.imread() 函数会返回一个 Numpy数组对象, 默认会以BGR的三原色通道进行读取
-night = cv2.imread("nightcore.jpg", cv2.IMREAD_GRAYSCALE); # 指定以'灰度图'的方式进行读取
+# 等价于 niko = cv2.imread("Niko.png", cv2.IMREAD_COLOR / 1)
+night = cv2.imread("nightcore.jpg", cv2.IMREAD_GRAYSCALE); # 指定以'灰度图'的方式进行读取 (cv2.IMREAD_GRAYSCALE 也被写作 '0')
+# 还有一种情况,图片是png, 包含ALpha透明通道, 此时用 "-1" 或 cv2.IMREAD_UNCHANGED 读取 (cv2.imread("xxx.png", -1))
+
 bgr = cv2.imread("bgr.png");
 
 # 这里返回的Numpy数组是个'三维数组':
