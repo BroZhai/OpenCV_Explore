@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 print(f"当前使用的OpenCV的版本是: {cv2.getVersionString()}");
 
 # 图片的读取
@@ -27,6 +28,33 @@ print(f"图片niko.size 的值为(高x长x通道数): {niko.size}, 其中 高x�
 ## .ndim 看图片的'维度' (灰度图=2, 彩图=3)
 print(f"niko.png的维度为{niko.ndim}") # BGR彩图, 3
 print(f"night.jpg的维度为{night.ndim}") # 读的时候用的就是灰度图, 2
+
+## .copy() 创建一个完全独立的'深拷贝' (在新的内存区域放'复制的图像', 视为一个'独立对象')
+independent_night = night.copy(); # 对independent_night的任何修改都不会原来的影响到原来的'night'
+
+## .flatten() 将图像自身(多维数组) 全部展开成'一维数组'
+print(bgr.flatten());
+
+## .reshape() 
+# 详情见 ./hello_numpy中的研究例子
+## 在opencv中, 我们常用其'-1自动算'占位符来直接算某些值 (e.g., 用二维数组表示 niko彩图'每个通道'的总像素数 [B通道总像素集合, G通道总像素集合, R通道总像素集合])
+# 思路: 我们知道niko.shape(彩图)是个三维数组(见下方'bgr'示例), 高900, 长1200, 3个通道
+# 我们要将前面的'高' 和 '长'两个数组展开成'一个数组', 而后面的'3通道'不变(突破口)
+# 给定'3个通道', 二维数组就'只差一个值', 所以可以直接用'-1'表示差的那个值, 让Numpy自己算
+
+print(f"niko.shape: {niko.shape}"); # niko.shape = (900, 1200, 3);
+conbined_niko = niko.reshape(-1,3); # 这里reshape()后的niko变成了二维数组, 具体展开如下所示
+"""
+conbined_niko.shape (H*W, 通道数3); 前面的h*w用上面的'-1'算出来的 (900*1200)
+conbined_niko.shape = (900*1200, 3) = (1080000, 3); 
+"""
+print(f"niko.reshape后的conbined_niko.shape: {conbined_niko.shape}"); # (1080000, 3)
+print()
+
+
+
+
+print('=======================================');
 
 print(bgr);
 """
