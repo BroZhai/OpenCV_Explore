@@ -1,5 +1,5 @@
 
-
+# 普通for & while循环任务, 直接跳过
 # task3: use two mothods (e.g., for loop and while statement) to print a multiplication table
 
 """
