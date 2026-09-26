@@ -10,13 +10,23 @@ night = cv2.imread("nightcore.jpg", cv2.IMREAD_GRAYSCALE); # 指定以'灰度图
 bgr = cv2.imread("bgr.png");
 
 # 这里返回的Numpy数组是个'三维数组':
-# 第0维(最外层列表): 像素所处行数 (总元素数为'图像高')
-# 第1维(中间列表): 像素所处列数 (总元素数为'图像长')
+# 第0维(最外层列表): 像素所处行数 (总元素数为'图像高', y)
+# 第1维(中间列表): 像素所处列数 (总元素数为'图像长', x)
 # 第2维(最内部列表): 这个像素的BGR通道 (注意不是'RGB'!)
 
 print(f"niko变量的数据类型是: {type(niko)}"); # numpy.ndarray
-print(niko.shape);
-print(night.shape); # 发现'颜色通道'消失了
+
+# (★)读取的'图片对象'(Numpy ndarray) 常用属性 & 方法
+## .shape 图片的'尺寸信息', 返回一个'元组'即表示'图片(高, 长, 通道数)' (如果已经是'灰度图'的话则不会有'通道数')
+print(f"niko.png的高度为: {niko.shape[0]}, 长度为: {niko.shape[1]}")
+print(f"使用直接调用.shape属性得元组表示: {niko.shape}"); # 
+
+## .size 图片的 高 x 长 x 通道数 (其实就是.shape中的所有元素相乘)
+print(f"图片niko.size 的值为(高x长x通道数): {niko.size}, 其中 高x长 的总像素数为: {niko.shape[0] * niko.shape[1]}");
+
+## .ndim 看图片的'维度' (灰度图=2, 彩图=3)
+print(f"niko.png的维度为{niko.ndim}") # BGR彩图, 3
+print(f"night.jpg的维度为{night.ndim}") # 读的时候用的就是灰度图, 2
 
 print(bgr);
 """
