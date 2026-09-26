@@ -1,12 +1,5 @@
 import cv2
 import numpy as np
-# print(cv2.__version__)
-
-# image = cv2.imread('cat.jpg') # default, colorful 和下面的第一个('cat.jpg', 1)一样
-
-cat = cv2.imread('cat.jpg', 1) # colorful, BGR
-# image = cv2.imread('cat.jpg', 0) # gray-scale
-# image = cv2.imread('cat.jpg', -1) # unchanged, e.g., images include alpha channel (png格式用这个读)
 
 # flag = cv2.COLOR_BGR2RGB # Change colorspace BGR->RGB 
 flag = cv2.COLOR_BGR2GRAY
@@ -46,9 +39,4 @@ cv2.imshow('segemented coins', result);
 # 等待按键，再关闭窗口
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
-church_main = cv2.imread('church.jpg',1);
-church_part = cv2.imread('church_part.jpg',1);
-
-orb = cv2.ORB_create()
 
